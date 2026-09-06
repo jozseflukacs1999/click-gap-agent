@@ -1,6 +1,6 @@
 # click-gap-agent
 
-A Claude skill that reads Google Search Console data and returns SEO findings as a Google Doc. Used for CirclePOS SEO work.
+A Claude skill that reads Google Search Console data and returns SEO findings as a Google Doc. Used for SEO work.
 
 Three analyses over one export:
 
@@ -20,7 +20,7 @@ It drafts. It does not publish, and it does not know what is true about the site
 
 The skill asks for a Search Console export (Performance → Export → Google Sheets). That export splits queries and pages into separate tabs, so a query cannot be traced to a page directly. The skill reconstructs the pairing from URL slugs and verifies it against the page totals — a query cannot have more clicks or impressions than the page it is assigned to.
 
-Measured on hollandmunkak.hu against API ground truth: **38 of 40 correct (95%)**, and **21 of 21 correct** among pairings it labelled "confident". The two misses were trade synonyms where the query word appears nowhere in the URL.
+Measured on domains against API ground truth: **38 of 40 correct (95%)**, and **21 of 21 correct** among pairings it labelled "confident". The two misses were trade synonyms where the query word appears nowhere in the URL.
 
 For genuinely joined query-by-page rows, export from a Looker Studio report built on the Search Console connector's **URL Impression** table, which carries Landing Page and Query on the same row. That also makes cannibalisation visible — the same query ranking on two pages — which the standard export cannot show at all.
 
